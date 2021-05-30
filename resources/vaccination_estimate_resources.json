@@ -1,0 +1,65 @@
+{
+    "models": {
+        "vaccination_estimate": {
+            "description": "Represents the estimate vaaccination date for a driver",
+            "fields":[
+                { "name": "driver_id", "type": "string" },
+                { "name": "vaccination_estimate", "type": "date" },
+                { "name": "estimation_date", "type": "date" }
+            ]
+        },
+        "state_vaccination_estimates": {
+            "description": "Represents a state vaccination estimate for each age",
+            "fields":[
+                { "name": "state_acronym", "type": "string" },
+                { "name": "estimates", "type": "models.age_estimate[]" }
+            ]
+        },
+        "age_estimate": {
+            "description": "Represents the estimate vaccination date for a given age . Note that a separate persistance structure for models.age_estimate is not necessary",
+            "fields": [
+                { "name": "age", "type": "string" },
+                { "name": "estimate", "type": "string" }
+            ]
+        }
+    },
+    "resources" : {
+        "operations" : [
+            {
+                "method": "GET",
+                "description": "Returns a prediction for a drivers' vaccination date using the updated state estimates",
+                "path":"/:driver_id",
+                "responses": {
+                    "200": { "type": "models.vaccination_estimate"},
+                    "401": { "type": "errors.unauthorized"},
+                    "404": { "type": "errors.not_found"},
+                    "422": { "type": "errors.generic_error" }
+                }
+            },
+            {
+                "method": "POST",
+                "description": "Creates updated values for a states' vaccination estimates",
+                "path":"/states/:state_acronym",
+                "body": { "type": "age_estimate" },
+                "responses": {
+                    "200": { "type": "models.state_vaccination_estimate"},
+                    "400": { "type": "errors.invalid_data" },
+                    "401": { "type": "errors.unauthorized" },
+                    "422": { "type": "errors.generic_error" }
+                }
+            }
+        ],
+        "messages" : [
+            {
+                "group": "driver_qol_event",
+                "events": [
+                    { 
+                        "name": "vaccination_prediction_event",
+                        "description": "Sent when a new vaccination date prediction for a driver is defined",
+                        "type":"models.notification"
+                    }
+                ]
+            }
+        ]
+    }
+}

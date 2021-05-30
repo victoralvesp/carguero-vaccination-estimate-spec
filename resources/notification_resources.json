@@ -1,0 +1,55 @@
+{
+    "models": {
+        "notification": {
+            "description": "Represents a notification for a user",
+            "fields":[
+                { "name": "user_id", "type": "string" },
+                { "name": "creation_date", "type": "date" },
+                { "name": "status", "type": "models.notification_status" },
+                { "name": "text", "type": "string" }
+            ]
+        },
+        "notification_status" : {
+            "description": "Represents a notification status. Note does not need a separate persistence structure",
+            "fields":[
+                { "name": "value", "type": "string" }
+            ]
+        }
+    },
+    "resources" : {
+        "operations" : [
+            {
+                "method": "GET",
+                "description": "Returns all stored notifications for a user",
+                "path":"/:user_id",
+                "responses": {
+                    "200": { "type": "models.notification[]"},
+                    "401": { "type": "errors.unauthorized"},
+                    "404": { "type": "errors.not_found"}
+                }
+            },
+            {
+                "method": "GET",
+                "description": "Returns all models.notification_status.new notifications for a user",
+                "path":"/:driver_id?only_new",
+                "responses": {
+                    "200": { "type": "models.notification[]"},
+                    "401": { "type": "errors.unauthorized"},
+                    "404": { "type": "errors.not_found"}
+                }
+            }
+        ],
+        "messages" : [
+            {
+                "group": "notification_event",
+                "events": [
+                    { 
+                        "name": "new_user_notification_event",
+                        "description": "Sent when a user has a new notification",
+                        "type":"models.notification"
+                    }
+                ]
+            }
+        ]
+    }
+}
