@@ -1,1 +1,1 @@
-![Diagrama arquitateura](diagram.drawio.svg)
+![Diagrama arquitateura](diagram.svg)
