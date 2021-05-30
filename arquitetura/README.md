@@ -1,4 +1,24 @@
 # Arquitetura
+- [Arquitetura](#arquitetura)
+  - [Resumo](#resumo)
+  - [Introdução](#introdução)
+  - [Características](#características)
+    - [Custo/Mantenabilidade](#customantenabilidade)
+    - [Modularidade](#modularidade)
+    - [Extensibilidade](#extensibilidade)
+    - [Agilidade](#agilidade)
+  - [Detalhamento](#detalhamento)
+    - [Serviço de Qualidade de Vida do Motorista (DriverQoLService)](#serviço-de-qualidade-de-vida-do-motorista-driverqolservice)
+      - [**Obtenção de dados**](#obtenção-de-dados)
+      - [**Mensagens**](#mensagens)
+    - [Serviço de Notificação (NotificationService)](#serviço-de-notificação-notificationservice)
+      - [**Obtenção de dados**](#obtenção-de-dados-1)
+      - [**Mensagens**](#mensagens-1)
+    - [Proxy do Firebase Cloud Messaging [FCMProxy]](#proxy-do-firebase-cloud-messaging-fcmproxy)
+      - [**Obtenção de dados**](#obtenção-de-dados-2)
+    - [App](#app)
+  - [Tecnologias Sugeridas](#tecnologias-sugeridas)
+          - [<a name="note-1">1</a>:  Como não espera-se que os dados de cadastro sejam alterados com frequencia pode-se utilziar o intervalo de uma semana](#1--como-não-espera-se-que-os-dados-de-cadastro-sejam-alterados-com-frequencia-pode-se-utilziar-o-intervalo-de-uma-semana)
 
 ## Resumo
 
@@ -38,12 +58,31 @@ A separação da infraestrutura destes serviços também contribui para esta car
 
 ### Serviço de Qualidade de Vida do Motorista (DriverQoLService)
 
-O *DriverQoLService* é o responsável pela definição da previsão de vacinação de cada motorista bem como notificar outros serviços quando novas previsões são geradas
+O *DriverQoLService* é o responsável pela definição da previ- [Arquitetura](#arquitetura)
+  - [Resumo](#resumo)
+  - [Introdução](#introdução)
+  - [Características](#características)
+    - [Custo/Mantenabilidade](#customantenabilidade)
+    - [Modularidade](#modularidade)
+    - [Extensibilidade](#extensibilidade)
+    - [Agilidade](#agilidade)
+  - [Detalhamento](#detalhamento)
+    - [Serviço de Qualidade de Vida do Motorista (DriverQoLService)](#serviço-de-qualidade-de-vida-do-motorista-driverqolservice)
+      - [**Obtenção de dados**](#obtenção-de-dados)
+      - [**Mensagens**](#mensagens)
+    - [Serviço de Notificação (NotificationService)](#serviço-de-notificação-notificationservice)
+      - [**Obtenção de dados**](#obtenção-de-dados-1)
+      - [**Mensagens**](#mensagens-1)
+    - [Proxy do Firebase Cloud Messaging [FCMProxy]](#proxy-do-firebase-cloud-messaging-fcmproxy)
+      - [**Obtenção de dados**](#obtenção-de-dados-2)
+    - [App](#app)
+  - [Tecnologias Sugeridas](#tecnologias-sugeridas)
+          - [<a name="note-1">1</a>:  Como não espera-se que os dados de cadastro sejam alterados com frequencia pode-se utilziar o intervalo de uma semana](#1--como-não-espera-se-que-os-dados-de-cadastro-sejam-alterados-com-frequencia-pode-se-utilziar-o-intervalo-de-uma-semana)são de vacinação de cada motorista bem como notificar outros serviços quando novas previsões são geradas
 
 #### **Obtenção de dados**
 O *DriverQoLService* utiliza um **Web Crawler** para obter as informações de estimativa de vacinação de cada estado. Desejável: separar execução deste da execução do processamento de vacinação
 
-Ele também utiliza um **BackgroundWorker (denominado DbSync)** para sincronizar os dados do [motorista](../resources/driver_resources.json). Desejável: separar execução deste da execução do processamento de vacinação
+Ele também utiliza um **BackgroundWorker (denominado DbSync)** para sincronizar os dados do [motorista](../api/driver_resources.json). Desejável: separar execução deste da execução do processamento de vacinação
 
 #### **Mensagens**
 

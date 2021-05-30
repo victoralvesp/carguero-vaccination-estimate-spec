@@ -7,13 +7,18 @@
     - [Servidor](#servidor)
     - [Integração contínua (Continuos integration)](#integração-contínua-continuos-integration)
     - [Entrega contínua (Continuos delivery)](#entrega-contínua-continuos-delivery)
+    - [Esforço estimado](#esforço-estimado)
   - [Requisitos de infraestrutura para o Serviço de Notificação [NotificationService]](#requisitos-de-infraestrutura-para-o-serviço-de-notificação-notificationservice)
     - [Persistencia](#persistencia-1)
     - [Servidor](#servidor-1)
     - [Integração contínua (Continuos integration)](#integração-contínua-continuos-integration-1)
     - [Entrega contínua (Continuos delivery)](#entrega-contínua-continuos-delivery-1)
+    - [Esforço estimado](#esforço-estimado-1)
   - [Requisitos de infraestrutura para Mensageria](#requisitos-de-infraestrutura-para-mensageria)
+    - [Esforço estimado](#esforço-estimado-2)
   - [Requisitos para o Firebase Cloud Messaging [FCM]](#requisitos-para-o-firebase-cloud-messaging-fcm)
+    - [Esforço estimado](#esforço-estimado-3)
+        - [<a name="note-1">1</a> : para o modelo [state_vaccination_estimates] utilizar tabela em NoSql com entradas por estado com arrays com as previsões, em meses, para cada uma das idades. Ex:](#1--para-o-modelo-state_vaccination_estimates-utilizar-tabela-em-nosql-com-entradas-por-estado-com-arrays-com-as-previsões-em-meses-para-cada-uma-das-idades-ex)
 
 
 ## Introdução
@@ -32,7 +37,7 @@ Os tópicos a serem discutidos são:
 O Serviço de Qualidade de Vida do Motorista [DriverQoLService] necessita de uma estrutura de persistência e de servidores para receber as requisições e consumir as mensagens da Mensageria
 
 ### Persistencia
-Para a persistencia do serviço se faz necessária uma estrutura (preferencialmente em NoSql) para previsão de vacinação seguindo os modelos de [VaccinationEstimateResource](resources/vaccination_estimate_resources.json) ver [sugestão](#note-1).
+Para a persistencia do serviço se faz necessária uma estrutura (preferencialmente em NoSql) para previsão de vacinação seguindo os modelos de [VaccinationEstimateResource](../api/vaccination_estimate_resources.json) ver [1](#note-1).
 Para garantir a publicação correta em produção é necessário criar um processo automatizado para a publicação dessa estrutura.
 
 
@@ -47,7 +52,7 @@ Necessário a definição e criação de processo de integração de código e e
 Necessário a definicão e criação de processo automatizado para compilar e publicar o código de um repositório exclusivo para este serviço
 
 
-Esforço estimado
+### Esforço estimado
 - Persistência 
   -  Implementação: M
   -  Automatização: M+
@@ -72,7 +77,7 @@ Esforço estimado
 O Serviço de Notificação [NotificationService] necessita de uma estrutura de persistência e de servidores para receber as requisições e consumir as mensagens da Mensageria
 
 ### Persistencia
-Para a persistencia do serviço se faz necessária uma estrutura (preferencialmente em NoSql) para notificações seguindo o [NotificationsResource](resources/notifications_resources.json)
+Para a persistencia do serviço se faz necessária uma estrutura (preferencialmente em NoSql) para notificações seguindo o [NotificationsResource](../api/notifications_resources.json)
 Para garantir a publicação correta em produção é necessário criar um processo automatizado para a publicação dessa estrutura.
 
 ### Servidor
@@ -86,7 +91,7 @@ Necessário a definição e criação de processo de integração de código e e
 Necessário a definicão e criação de processo automatizado para compilar e publicar o código de um repositório exclusivo para este serviço
 
 
-Esforço estimado
+### Esforço estimado
 - Persistência 
   -  Implementação M
   -  Automatização M+
@@ -111,7 +116,7 @@ Esforço estimado
 Necessário serviço de mensageria com garantia de pelo menos uma entrega (At-least-once delivery).
 
 
-Esforço estimado
+### Esforço estimado
 - Implementação M+
 - Publicação M
  
@@ -120,13 +125,13 @@ Esforço estimado
 
 Necessário configurar o serviço do Google [Firebase Cloud Messaging - FCM](https://firebase.google.com/docs/cloud-messaging/) para envio de mensagens para grupos de dispositivos (os dispositivos configurados para o Motorista).
 
-Esforço estimado
+### Esforço estimado
 - Implementação M+
 
 
 
 
-> ##### <a name="note-1"></a> Sugestão: para o modelo [state_vaccination_estimates] utilizar tabela em NoSql com entradas por estado com arrays com as previsões, em meses, para cada uma das idades. Ex: 
+ ##### <a name="note-1">1</a> : para o modelo [state_vaccination_estimates] utilizar tabela em NoSql com entradas por estado com arrays com as previsões, em meses, para cada uma das idades. Ex: 
 > `{
         {
             "state":"SC",
@@ -169,7 +174,7 @@ Esforço estimado
         ...
     ]
 }`
-
+<br>
 > Legenda: Esforços: [P]  pequeno - ~ 2h - 3h;
 >                    [M]  médio - ~ 2h - 4h;
 >                    [M+] acima da média - ~ 3h - 8h;
