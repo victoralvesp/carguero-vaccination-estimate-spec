@@ -38,9 +38,9 @@
             },
             {
                 "method": "POST",
-                "description": "Creates updated values for a states' vaccination estimates",
-                "path":"/states/:state_acronym",
-                "body": { "type": "age_estimate" },
+                "description": "Define updated values for all states' vaccination estimates",
+                "path":"/",
+                "body": { "type": "models.state_vaccination_estimates[]" },
                 "responses": {
                     "200": { "type": "models.state_vaccination_estimate"},
                     "400": { "type": "errors.invalid_data" },
