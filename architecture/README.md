@@ -75,6 +75,13 @@ Desejável: Persistir status de leitura da mensagem
 O *FCMProxy* deve ler novas notificações através da mensageria.
 
 
+### App
+
+Responsável por responder a mensagens enviadas a partir do FCM. Deve receber uma nova mensagem, salvá-la e mostrar ao usuário quando este abrir o App
+
+Desejável: não mostrar como Popup, mas sim como uma notificação em área separada da tela principal
+
+
 ## Tecnologias Sugeridas
 
 - DriverQoLService - Pod de Kubernetes (com AKS) + MongoDb (com CosmoDB)
