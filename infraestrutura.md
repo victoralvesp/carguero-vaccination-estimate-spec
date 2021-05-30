@@ -1,11 +1,28 @@
-# DevOps
+# Infraestrutura
+
+- [Infraestrutura](#infraestrutura)
+  - [Introdução](#introdução)
+  - [Requisitos de infraestrutura para o Serviço de Qualidade de Vida do Motorista [DriverQoLService]](#requisitos-de-infraestrutura-para-o-serviço-de-qualidade-de-vida-do-motorista-driverqolservice)
+    - [Persistencia](#persistencia)
+    - [Servidor](#servidor)
+    - [Integração contínua (Continuos integration)](#integração-contínua-continuos-integration)
+    - [Entrega contínua (Continuos delivery)](#entrega-contínua-continuos-delivery)
+  - [Requisitos de infraestrutura para o Serviço de Notificação [NotificationService]](#requisitos-de-infraestrutura-para-o-serviço-de-notificação-notificationservice)
+    - [Persistencia](#persistencia-1)
+    - [Servidor](#servidor-1)
+    - [Integração contínua (Continuos integration)](#integração-contínua-continuos-integration-1)
+    - [Entrega contínua (Continuos delivery)](#entrega-contínua-continuos-delivery-1)
+  - [Requisitos de infraestrutura para Mensageria](#requisitos-de-infraestrutura-para-mensageria)
+  - [Requisitos para o Firebase Cloud Messaging [FCM]](#requisitos-para-o-firebase-cloud-messaging-fcm)
+
+
+## Introdução
 
 Será necessária organização junto com a squad de DevOps para alinhamento dos elementos de infraestrutura necessários para a nova funcionalidade.
 
 Os tópicos a serem discutidos são:
 - Infraestrutura do Serviço de Qualidade de Vida do Motorista [DriverQoLService]
 - Infraestrutura do Serviço de Notificação [NotificationService]
-- Infraestrutura para Web Crawler
 - Infraestrutura da Mensageria
 - Configuração do Firebase Cloud Messaging [FCM]
 
@@ -15,7 +32,7 @@ Os tópicos a serem discutidos são:
 O Serviço de Qualidade de Vida do Motorista [DriverQoLService] necessita de uma estrutura de persistência e de servidores para receber as requisições e consumir as mensagens da Mensageria
 
 ### Persistencia
-Para a persistencia do serviço se faz necessária uma estrutura (preferencialmente em NoSql) para previsão de vacinação seguindo os modelos de [VaccinationEstimateResource](resources/vaccination_estimate_resources.json) ver [sugestão](#note_1).
+Para a persistencia do serviço se faz necessária uma estrutura (preferencialmente em NoSql) para previsão de vacinação seguindo os modelos de [VaccinationEstimateResource](resources/vaccination_estimate_resources.json) ver [sugestão](#note-1).
 Para garantir a publicação correta em produção é necessário criar um processo automatizado para a publicação dessa estrutura.
 
 
@@ -89,32 +106,6 @@ Esforço estimado
   - Publicação: P
   
 
-## Requisitos de infraestrutura para o Web Crawler
-
-### Servidor
-Necessário definição estrutura de parâmetros para Kubernetes [k8s] para subir um serviço com API Rest
-Para garantir a publicação correta em produção é necessário criar um processo automatizado para a publicação dessa estrutura.
-
-### Integração contínua (Continuos integration)
-Necessário a definição e criação de processo de integração de código e execução de testes automátizados  exclusivo para este serviço
-
-### Entrega contínua (Continuos delivery)
-Necessário a definicão e criação de processo automatizado para compilar e publicar o código de um repositório exclusivo para este serviço
-
-- Servidor
-  -  Implementação P
-  -  Automatização P
-  -  Teste P
-
-- Integração contínua (Continuos integration)
-  - Implementação: M
-  - Publicação: P
-  
-- Entrega contínua (Continuos delivery) 
-  - Implementação: M
-  - Publicação: P
-
-
 ## Requisitos de infraestrutura para Mensageria
 
 Necessário serviço de mensageria com garantia de pelo menos uma entrega (At-least-once delivery).
@@ -135,7 +126,7 @@ Esforço estimado
 
 
 
-> ##### <a name="note_1"></a> Sugestão: para o modelo [state_vaccination_estimates] utilizar tabela em NoSql com entradas por estado com arrays com as previsões, em meses, para cada uma das idades. Ex: 
+> ##### <a name="note-1"></a> Sugestão: para o modelo [state_vaccination_estimates] utilizar tabela em NoSql com entradas por estado com arrays com as previsões, em meses, para cada uma das idades. Ex: 
 > `{
         {
             "state":"SC",

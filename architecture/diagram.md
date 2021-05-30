@@ -1,0 +1,1 @@
+![Diagrama arquitateura](diagram.drawio)

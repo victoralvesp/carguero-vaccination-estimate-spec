@@ -3,6 +3,7 @@
         "notification": {
             "description": "Represents a notification for a user",
             "fields":[
+                { "name": "id", "type": "string"},
                 { "name": "user_id", "type": "string" },
                 { "name": "creation_date", "type": "date" },
                 { "name": "status", "type": "models.notification_status" },
@@ -20,8 +21,8 @@
         "operations" : [
             {
                 "method": "GET",
-                "description": "Returns all stored notifications for a user",
-                "path":"/:user_id",
+                "description": "Returns all stored notifications for a user. Note: user_id is required",
+                "path":"/?user_id",
                 "responses": {
                     "200": { "type": "models.notification[]"},
                     "401": { "type": "errors.unauthorized"},
@@ -31,13 +32,24 @@
             {
                 "method": "GET",
                 "description": "Returns all models.notification_status.new notifications for a user",
-                "path":"/:driver_id?only_new",
+                "path":"/?user_id&only_new",
                 "responses": {
                     "200": { "type": "models.notification[]"},
                     "401": { "type": "errors.unauthorized"},
                     "404": { "type": "errors.not_found"}
                 }
+            },
+            {
+                "method": "POST",
+                "description": "Marks a notification as read",
+                "path":"/:id/read",
+                "responses": {
+                    "200": { "type": "models.notification"},
+                    "401": { "type": "errors.unauthorized"},
+                    "404": { "type": "errors.not_found"}
+                }
             }
+
         ],
         "messages" : [
             {

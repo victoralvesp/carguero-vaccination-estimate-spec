@@ -1,0 +1,12 @@
+{
+    "models": {
+        "driver": {
+            "description": "Represents the estimate vaaccination date for a driver",
+            "fields":[
+                { "name": "driver_id", "type": "string" },
+                { "name": "date_of_birth", "type": "date" },
+                { "name": "current_address", "type": "date" }
+            ]
+        }
+    }
+}
