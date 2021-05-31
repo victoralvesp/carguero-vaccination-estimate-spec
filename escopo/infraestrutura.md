@@ -175,9 +175,9 @@ Necessário configurar o serviço do Google [Firebase Cloud Messaging - FCM](htt
     ]
 }`
 <br>
-> Legenda: Esforços: [P]  pequeno - ~ 2h - 3h;
->                    [M]  médio - ~ 2h - 4h;
->                    [M+] acima da média - ~ 3h - 8h;
->                    [G]  grande - ~ 2d - 3d;
->                    [G+] muito grande - + 3d estudar subdividir o trabalho
+> Legenda: Esforços: [P]  pequeno: ~ 2h - 3h;
+>                    [M]  médio: ~ 2h - 4h;
+>                    [M+] acima da média: ~ 3h - 8h;
+>                    [G]  grande: ~ 2d - 3d;
+>                    [G+] muito grande: + 3d estudar subdividir o trabalho
   

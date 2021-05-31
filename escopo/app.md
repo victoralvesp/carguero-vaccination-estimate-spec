@@ -5,6 +5,8 @@
     - [Firebase Cloud Messaging](#firebase-cloud-messaging)
     - [Alertar usuário](#alertar-usuário)
     - [Esforço estimado](#esforço-estimado)
+  - [Testes](#testes)
+    - [Cenários](#cenários)
           - [<a name="note-1"><sup>1</sup></a>: para receber mensagens é necessário registrar o dispositivo junto (https://firebase.google.com/docs/cloud-messaging/android/client)](#sup1sup-para-receber-mensagens-é-necessário-registrar-o-dispositivo-junto-httpsfirebasegooglecomdocscloud-messagingandroidclient)
 
 ## Introdução
@@ -30,6 +32,11 @@ O *App* deve receber mensagens vindas do *Firebase Cloud Messaging (FCM)* e salv
 - Implementação FCM SDK : M
 - Alertar Usuário: M
 
+## Testes
+Será necessário configurar o Firebase Cloud Messaging para envio de uma notificação de teste
+
+### Cenários
+1. 
 
 
 

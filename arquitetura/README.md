@@ -18,7 +18,7 @@
       - [**Obtenção de dados**](#obtenção-de-dados-2)
     - [App](#app)
   - [Tecnologias Sugeridas](#tecnologias-sugeridas)
-          - [<a name="note-1">1</a>:  Como não espera-se que os dados de cadastro sejam alterados com frequencia pode-se utilziar o intervalo de uma semana](#1--como-não-espera-se-que-os-dados-de-cadastro-sejam-alterados-com-frequencia-pode-se-utilziar-o-intervalo-de-uma-semana)
+          
 
 ## Resumo
 
@@ -134,4 +134,4 @@ Desejável: não mostrar como Popup, mas sim como uma notificação em área sep
 <br>
 
 
-###### <a name="note-1">1</a>:  Como não espera-se que os dados de cadastro sejam alterados com frequencia pode-se utilziar o intervalo de uma semana
+<a name="note-1">1</a>:  Como não espera-se que os dados de cadastro sejam alterados com frequencia pode-se utilziar o intervalo de uma semana
